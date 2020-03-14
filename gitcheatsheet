@@ -1,0 +1,9 @@
+git remote add production git@github.com:mbah1977/production.git #After cloning a github repo, and creating a new branch locally, you use this command to add the branch to the git repo
+
+git push -u origin production  #After you commit your stuff to the new branch, you use this command to push to the remote repo
+
+#The name of the repo is the name you will find on the local system after cloning a repo, not the name of the branch that you create.
+
+git remote -v # this will tell you how many branches you have on the remote repo
+
+git remote remove <branch name> # this will remove the remote branch from the repo
