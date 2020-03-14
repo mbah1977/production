@@ -1,0 +1,2 @@
+---
+profiles::hiera_test::country1: 'USA'

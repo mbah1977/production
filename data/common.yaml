@@ -1,0 +1,11 @@
+---
+profiles::hiera_test::ssl: 'false'
+profiles::hiera_test::backups_enabled: 'true'
+profiles::nginx::country: 
+profiles::hiera_test::filename: 'newfile1'
+profiles::hiera_test::continent:
+                          - country: 'africa'
+                            city: 'yaounde'
+                          - province: 'nigeria'
+                            city: 'abuja'
+profiles::hiera_test::country1: 'ghana'     

@@ -1,0 +1,486 @@
+aio_agent_version => 6.13.0
+augeas => {
+  version => "1.12.0"
+}
+disks => {
+  sda => {
+    model => "VMware Virtual S",
+    size => "30.00 GiB",
+    size_bytes => 32212254720,
+    vendor => "VMware,"
+  },
+  sr0 => {
+    model => "VMware IDE CDR10",
+    size => "1.00 GiB",
+    size_bytes => 1073741312,
+    vendor => "NECVMWar"
+  }
+}
+dmi => {
+  bios => {
+    release_date => "07/29/2019",
+    vendor => "Phoenix Technologies LTD",
+    version => "6.00"
+  },
+  board => {
+    manufacturer => "Intel Corporation",
+    product => "440BX Desktop Reference Platform",
+    serial_number => "None"
+  },
+  chassis => {
+    asset_tag => "No Asset Tag",
+    type => "Other"
+  },
+  manufacturer => "VMware, Inc.",
+  product => {
+    name => "VMware Virtual Platform",
+    serial_number => "VMware-56 4d 86 4c 40 3b 91 0e-4d 93 26 c3 23 00 d6 2a",
+    uuid => "4C864D56-3B40-0E91-4D93-26C32300D62A"
+  }
+}
+facterversion => 3.14.8
+filesystems => xfs
+fips_enabled => false
+hypervisors => {
+  vmware => {
+    version => ""
+  }
+}
+identity => {
+  gid => 0,
+  group => "root",
+  privileged => true,
+  uid => 0,
+  user => "root"
+}
+is_virtual => true
+kernel => Linux
+kernelmajversion => 3.10
+kernelrelease => 3.10.0-1062.el7.x86_64
+kernelversion => 3.10.0
+load_averages => {
+  15m => 0.05,
+  1m => 0.01,
+  5m => 0.06
+}
+memory => {
+  swap => {
+    available => "2.99 GiB",
+    available_bytes => 3211513856,
+    capacity => "0.30%",
+    total => "3.00 GiB",
+    total_bytes => 3221221376,
+    used => "9.26 MiB",
+    used_bytes => 9707520
+  },
+  system => {
+    available => "1.25 GiB",
+    available_bytes => 1340108800,
+    capacity => "66.11%",
+    total => "3.68 GiB",
+    total_bytes => 3954032640,
+    used => "2.43 GiB",
+    used_bytes => 2613923840
+  }
+}
+mountpoints => {
+  / => {
+    available => "21.38 GiB",
+    available_bytes => 22958292992,
+    capacity => "17.71%",
+    device => "/dev/mapper/centos-root",
+    filesystem => "xfs",
+    options => [
+      "rw",
+      "seclabel",
+      "relatime",
+      "attr2",
+      "inode64",
+      "noquota"
+    ],
+    size => "25.98 GiB",
+    size_bytes => 27899465728,
+    used => "4.60 GiB",
+    used_bytes => 4941172736
+  },
+  /boot => {
+    available => "830.82 MiB",
+    available_bytes => 871182336,
+    capacity => "18.06%",
+    device => "/dev/sda1",
+    filesystem => "xfs",
+    options => [
+      "rw",
+      "seclabel",
+      "relatime",
+      "attr2",
+      "inode64",
+      "noquota"
+    ],
+    size => "1014.00 MiB",
+    size_bytes => 1063256064,
+    used => "183.18 MiB",
+    used_bytes => 192073728
+  },
+  /dev => {
+    available => "1.83 GiB",
+    available_bytes => 1959587840,
+    capacity => "0%",
+    device => "devtmpfs",
+    filesystem => "devtmpfs",
+    options => [
+      "rw",
+      "seclabel",
+      "nosuid",
+      "size=1913660k",
+      "nr_inodes=478415",
+      "mode=755"
+    ],
+    size => "1.83 GiB",
+    size_bytes => 1959587840,
+    used => "0 bytes",
+    used_bytes => 0
+  },
+  /dev/hugepages => {
+    available => "0 bytes",
+    available_bytes => 0,
+    capacity => "100%",
+    device => "hugetlbfs",
+    filesystem => "hugetlbfs",
+    options => [
+      "rw",
+      "seclabel",
+      "relatime"
+    ],
+    size => "0 bytes",
+    size_bytes => 0,
+    used => "0 bytes",
+    used_bytes => 0
+  },
+  /dev/mqueue => {
+    available => "0 bytes",
+    available_bytes => 0,
+    capacity => "100%",
+    device => "mqueue",
+    filesystem => "mqueue",
+    options => [
+      "rw",
+      "seclabel",
+      "relatime"
+    ],
+    size => "0 bytes",
+    size_bytes => 0,
+    used => "0 bytes",
+    used_bytes => 0
+  },
+  /dev/pts => {
+    available => "0 bytes",
+    available_bytes => 0,
+    capacity => "100%",
+    device => "devpts",
+    filesystem => "devpts",
+    options => [
+      "rw",
+      "seclabel",
+      "nosuid",
+      "noexec",
+      "relatime",
+      "gid=5",
+      "mode=620",
+      "ptmxmode=000"
+    ],
+    size => "0 bytes",
+    size_bytes => 0,
+    used => "0 bytes",
+    used_bytes => 0
+  },
+  /dev/shm => {
+    available => "1.82 GiB",
+    available_bytes => 1958105088,
+    capacity => "0.96%",
+    device => "tmpfs",
+    filesystem => "tmpfs",
+    options => [
+      "rw",
+      "seclabel",
+      "nosuid",
+      "nodev"
+    ],
+    size => "1.84 GiB",
+    size_bytes => 1977016320,
+    used => "18.04 MiB",
+    used_bytes => 18911232
+  },
+  /run => {
+    available => "1.82 GiB",
+    available_bytes => 1956122624,
+    capacity => "1.06%",
+    device => "tmpfs",
+    filesystem => "tmpfs",
+    options => [
+      "rw",
+      "seclabel",
+      "nosuid",
+      "nodev",
+      "mode=755"
+    ],
+    size => "1.84 GiB",
+    size_bytes => 1977016320,
+    used => "19.93 MiB",
+    used_bytes => 20893696
+  },
+  /run/user/0 => {
+    available => "377.02 MiB",
+    available_bytes => 395333632,
+    capacity => "0.02%",
+    device => "tmpfs",
+    filesystem => "tmpfs",
+    options => [
+      "rw",
+      "seclabel",
+      "nosuid",
+      "nodev",
+      "relatime",
+      "size=386136k",
+      "mode=700"
+    ],
+    size => "377.09 MiB",
+    size_bytes => 395403264,
+    used => "68.00 KiB",
+    used_bytes => 69632
+  },
+  /run/user/0/gvfs => {
+    available => "0 bytes",
+    available_bytes => 0,
+    capacity => "100%",
+    device => "gvfsd-fuse",
+    filesystem => "fuse.gvfsd-fuse",
+    options => [
+      "rw",
+      "nosuid",
+      "nodev",
+      "relatime",
+      "user_id=0",
+      "group_id=0"
+    ],
+    size => "0 bytes",
+    size_bytes => 0,
+    used => "0 bytes",
+    used_bytes => 0
+  },
+  /sys/fs/cgroup => {
+    available => "1.84 GiB",
+    available_bytes => 1977016320,
+    capacity => "0%",
+    device => "tmpfs",
+    filesystem => "tmpfs",
+    options => [
+      "ro",
+      "seclabel",
+      "nosuid",
+      "nodev",
+      "noexec",
+      "mode=755"
+    ],
+    size => "1.84 GiB",
+    size_bytes => 1977016320,
+    used => "0 bytes",
+    used_bytes => 0
+  },
+  /var/lib/nfs/rpc_pipefs => {
+    available => "0 bytes",
+    available_bytes => 0,
+    capacity => "100%",
+    device => "sunrpc",
+    filesystem => "rpc_pipefs",
+    options => [
+      "rw",
+      "relatime"
+    ],
+    size => "0 bytes",
+    size_bytes => 0,
+    used => "0 bytes",
+    used_bytes => 0
+  }
+}
+networking => {
+  dhcp => "192.168.91.254",
+  domain => "localdomain",
+  fqdn => "puppetserver.localdomain",
+  hostname => "puppetserver",
+  interfaces => {
+    ens33 => {
+      bindings => [
+        {
+          address => "192.168.91.233",
+          netmask => "255.255.255.0",
+          network => "192.168.91.0"
+        }
+      ],
+      bindings6 => [
+        {
+          address => "fe80::810a:93f2:b106:506d",
+          netmask => "ffff:ffff:ffff:ffff::",
+          network => "fe80::"
+        }
+      ],
+      dhcp => "192.168.91.254",
+      ip => "192.168.91.233",
+      ip6 => "fe80::810a:93f2:b106:506d",
+      mac => "00:0c:29:00:d6:2a",
+      mtu => 1500,
+      netmask => "255.255.255.0",
+      netmask6 => "ffff:ffff:ffff:ffff::",
+      network => "192.168.91.0",
+      network6 => "fe80::",
+      scope6 => "link"
+    },
+    lo => {
+      bindings => [
+        {
+          address => "127.0.0.1",
+          netmask => "255.0.0.0",
+          network => "127.0.0.0"
+        }
+      ],
+      bindings6 => [
+        {
+          address => "::1",
+          netmask => "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+          network => "::1"
+        }
+      ],
+      ip => "127.0.0.1",
+      ip6 => "::1",
+      mtu => 65536,
+      netmask => "255.0.0.0",
+      netmask6 => "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+      network => "127.0.0.0",
+      network6 => "::1",
+      scope6 => "host"
+    },
+    virbr0 => {
+      bindings => [
+        {
+          address => "192.168.122.1",
+          netmask => "255.255.255.0",
+          network => "192.168.122.0"
+        }
+      ],
+      ip => "192.168.122.1",
+      mac => "52:54:00:1b:e4:1f",
+      mtu => 1500,
+      netmask => "255.255.255.0",
+      network => "192.168.122.0"
+    },
+    virbr0-nic => {
+      mac => "52:54:00:1b:e4:1f",
+      mtu => 1500
+    }
+  },
+  ip => "192.168.91.233",
+  ip6 => "fe80::810a:93f2:b106:506d",
+  mac => "00:0c:29:00:d6:2a",
+  mtu => 1500,
+  netmask => "255.255.255.0",
+  netmask6 => "ffff:ffff:ffff:ffff::",
+  network => "192.168.91.0",
+  network6 => "fe80::",
+  primary => "ens33",
+  scope6 => "link"
+}
+os => {
+  architecture => "x86_64",
+  family => "RedHat",
+  hardware => "x86_64",
+  name => "CentOS",
+  release => {
+    full => "7.7.1908",
+    major => "7",
+    minor => "7"
+  },
+  selinux => {
+    config_mode => "enforcing",
+    current_mode => "enforcing",
+    enabled => true,
+    enforced => true,
+    policy_version => "31"
+  }
+}
+partitions => {
+  /dev/mapper/centos-root => {
+    filesystem => "xfs",
+    mount => "/",
+    size => "26.00 GiB",
+    size_bytes => 27913093120,
+    uuid => "a4bc017d-ad8a-479d-8c2d-49eff1b7d719"
+  },
+  /dev/mapper/centos-swap => {
+    filesystem => "swap",
+    size => "3.00 GiB",
+    size_bytes => 3221225472,
+    uuid => "33836fc7-5093-444d-816a-ea480e60f1f5"
+  },
+  /dev/sda1 => {
+    filesystem => "xfs",
+    mount => "/boot",
+    size => "1.00 GiB",
+    size_bytes => 1073741824,
+    uuid => "719537d7-3364-407b-b18e-21378469dc80"
+  },
+  /dev/sda2 => {
+    filesystem => "LVM2_member",
+    size => "29.00 GiB",
+    size_bytes => 31137464320,
+    uuid => "gLX17C-t2Rp-rtnv-sbS5-XDow-RLME-aiyMUf"
+  }
+}
+path => /usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/root/bin:/opt/puppetlabs/bin
+processors => {
+  count => 2,
+  isa => "x86_64",
+  models => [
+    "Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz",
+    "Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz"
+  ],
+  physicalcount => 2
+}
+ruby => {
+  platform => "x86_64-linux",
+  sitedir => "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.5.0",
+  version => "2.5.7"
+}
+ssh => {
+  ecdsa => {
+    fingerprints => {
+      sha1 => "SSHFP 3 1 9af7cdc5d73636f4ae3dfc3e6ffc5876d0e6aba3",
+      sha256 => "SSHFP 3 2 821bd6a092f68903d109e8a694d98a213f952d301ce3c39ef8ba49740a44cd5e"
+    },
+    key => "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBM4oxpB6CVSA3qz15NbTD9iXwMHACN37olg0dZzHS9CMkWwS9qHvHBDzFiiYQk5O+lOEFsyVL9Y9A0xtBQ8eLMA=",
+    type => "ecdsa-sha2-nistp256"
+  },
+  ed25519 => {
+    fingerprints => {
+      sha1 => "SSHFP 4 1 cd07543e5a3986bafa58e88db6965a4a0c7a5a46",
+      sha256 => "SSHFP 4 2 7160e0187bd657a2b7d49ae7347307e865d2ba51af691bb6fdb44aaabb2aedd8"
+    },
+    key => "AAAAC3NzaC1lZDI1NTE5AAAAIOMHdlA5vvMmvsuvK6dwpuFDM/2TMHSq6Zr5Fyf6bDeb",
+    type => "ssh-ed25519"
+  },
+  rsa => {
+    fingerprints => {
+      sha1 => "SSHFP 1 1 85ec231cb568f8cc9e7a0fdc732eacdfee0efa7b",
+      sha256 => "SSHFP 1 2 90dac82c89c684e5412b4086bc3b3f7067934bc8b582c60fdeb91cd2a878ec8b"
+    },
+    key => "AAAAB3NzaC1yc2EAAAADAQABAAABAQCrJ7uC4t+/hmmmh4b6ARjLbtvsrzzeo4SrvJWTSAvqMZI7bPa2E4CjW8XD9HKc7DjElHE8fEup0dA1U9yMmSFVGZ14Sa1tEmqtDR2LXVBFxUDF72DWp2wFaMgfxjvRuecsnzw/+H1Ok9QghA9rbYveZ2a37OCJXh7R0ZDbFaMwGoMCw5Oa9waOyNewcUVc7DtbDgqPtZN67tw4hPZKPRqDU7+YynyYUDmyGppGOyq3x7YzeNtN7bnB6E+iAEEGswsN1GR0NkXaVer5tQjQ4/iR5o25WKE4V2Cu6QlFJB4DTvcQzt+waCp2Eq+u6tmVLFAgbxcUBJ1r7wfDRlIOrsct",
+    type => "ssh-rsa"
+  }
+}
+system_uptime => {
+  days => 0,
+  hours => 12,
+  seconds => 46703,
+  uptime => "12:58 hours"
+}
+timezone => EST
+virtual => vmware
