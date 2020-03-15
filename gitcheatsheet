@@ -14,3 +14,13 @@ Make sure you inside a repo before you do anything that has been be saved in the
 git commit --allow-empty -m "initial empty commit". You cannot change or create branches in Git until you have committed at least one change.
 Rename the 'master' branch to 'production' with git branch -m master production
 Push your changes with git push origin production
+
+    Create a new branch by running git branch <NAME-OF-NEW-BRANCH>
+    Check out the new branch by running git checkout <NAME-OF-NEW-BRANCH>
+    Edit the Puppetfile as needed for your new environment, and save your changes.
+    Commit your changes by running git commit -m "a commit message summarizing your change"
+    Push your changes by running git push origin <NAME-OF-NEW-BRANCH>
+    Deploy your environments as you normally would.
+
+    If you have set up a Code Manager webhook or script trigger, it deploys the environments automatically when you push your changes. Alternatively, deploy the environments on the command line with Code Manager or r10k commands.
+
