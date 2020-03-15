@@ -24,3 +24,47 @@ Push your changes with git push origin production
 
     If you have set up a Code Manager webhook or script trigger, it deploys the environments automatically when you push your changes. Alternatively, deploy the environments on the command line with Code Manager or r10k commands.
 
+bination of   
+git fetch 
+ and   
+git merge 
+Synchronize changes
+Synchronize changes
+Synchronize your local repository with the remote repository 
+on GitHub.com
+$ git push
+Uploads all local branch commits to GitHub
+$ git merge
+Combines remote tracking branch into current local branch
+$ git fetch
+Downloads all history from the remote tracking branches
+$ git branch -d [branch-name]
+Deletes the specified branch
+$ git merge [branch]
+Combines the specified branch’s history into the 
+current branch. This is usually done in pull requests, 
+but is an important Git operation.
+$ git checkout [branch-name]
+Switches to the specified branch and updates the 
+working directory
+Branches
+Branches are an important part of working with Git. Any 
+commits you make will be made on the branch you're currently 
+“checked out” to. Use  
+git status
+ to see which branch that is.
+$ git branch [branch-name]
+Creates a new branch
+
+ion history
+$ git add [file]
+Snapshots the file in preparation for versioning
+$ git show [commit]
+Outputs metadata and content changes of the specified commit
+
+Redo commits
+Erase mistakes and craft replacement history
+CAUTION! Changing history can have nasty side effects. If you 
+need to change commits that exist on GitHub (the remote), 
+proceed with caution. If you need help, reach out at 
+github.community or contact suppo
