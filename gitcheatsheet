@@ -1,6 +1,6 @@
 git remote add production git@github.com:mbah1977/production.git #After cloning a github repo, and creating a new branch locally, you use this command to add the branch to the git repo
 
-git push -u origin production  #After you commit your stuff to the new branch, you use this command to push to the remote repo
+git push -u <origin> production  #After you commit your stuff to the new branch, you use this command to push to the remote repo . origin branch is the name of the main branch that contains the previous commits.
 
 if you remove the origin branch with git remote remove <branch-name> then alawys use git push <branch> to push to remote atfter.
 #The name of the repo is the name you will find on the local system after cloning a repo, not the name of the branch that you create.
@@ -11,3 +11,6 @@ git remote remove <branch name> # this will remove the remote branch from the re
 
 Make sure you inside a repo before you do anything that has been be saved in the repo. In this case you must cd into the production dir here git@github.com:mbah1977/production.git, which is the name of the remote repo you will find as a directory on the cmdline.
 
+git commit --allow-empty -m "initial empty commit". You cannot change or create branches in Git until you have committed at least one change.
+Rename the 'master' branch to 'production' with git branch -m master production
+Push your changes with git push origin production
