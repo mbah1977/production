@@ -1,0 +1,297 @@
+Description:
+  Establish the VNET Infrastructure in which to deploy each SAP SID.
+
+Steps:
+  1)  Discover Remote State of the Hub to Peer to
+           \ r-7  `-. ._  ' .  `\
+            \`,      `-.`7  7)   )
+             \/         \|  \'  / `-._
+                        ||    .'
+                         \\  (
+                          >\  >
+                      ,.-' >.'
+                     <.'_.''
+                       <'
+*======================================+=======================================*/
+
+/*
+Description:
+  Establish the VNET Infrastructure in which to deploy each SAP SID.
+
+Steps:
+  1)  Discover Remote State of the Hub to Peer to
+  2)  Create Resource Group for Track Infrastructure
+      a) Output Required
+  3)  Create VNET
+      a) Output Required
+  4)  Peer Track VNET to HUB
+  5)  Peer HUB to Track VNET
+  6)  Create Storage Account for Track
+      a) Output Required
+
+
+Configuration:
+
+
+Resources:
+        Resource Group                                            = azurerm_resource_group.rg
+  VNET                                                      = azurerm_virtual_network.vnet
+  VNET Peering                                              = azurerm_virtual_network_peering.peer_track_to_hub
+  VNET Peering                                              = azurerm_virtual_network_peering.peer_hub_to_track
+  Storage Account - Store                                   = azurerm_storage_account.storage
+
+
+Dependencies:
+  Remote State - HUB                                        = vnet_id
+  Remote State - HUB                                        = vnet_name
+  peer_track_to_hub                                         = azurerm_virtual_network.vnet
+  peer_hub_to_track                                         = azurerm_virtual_network_peering.peer_track_to_hub
+
+  rg_name                                                   = azurerm_resource_group.rg.name
+  vnet_address_space                                        = azurerm_virtual_network.vnet.address_space
+  vnet_id                                                   = azurerm_virtual_network.vnet.id
+  vnet_name                                                 = azurerm_virtual_network.vnet.name
+  storage_name                                              = azurerm_storage_account.storage.name
+
+/*
+  _______________________________________
+/               Welcome to                \
+\             PROJECT: MAYHEM             /
+  ---------------------------------------
+
+              \
+               \
+                \\
+                 \\
+                  >\/7
+              _.-(6'  \
+             (=___._/` \
+                  )  \ |
+                 /   / |
+                /    > /
+               j    < _\
+           _.-' :      ``.
+           \ r=._\        `.
+          <`\\_  \         .`-.
+           \ r-7  `-. ._  ' .  `\
+            \`,      `-.`7  7)   )
+             \/         \|  \'  / `-._
+                        ||    .'
+                         \\  (
+                          >\  >
+                      ,.-' >.'
+                     <.'_.''
+                       <'
+*======================================+=======================================*/
+
+/*
+Description:
+  Establish the VNET Infrastructure in which to deploy each SAP SID.
+
+Steps:
+  1)  Discover Remote State of the Hub to Peer to
+  2)  Create Resource Group for Track Infrastructure
+      a) Output Required
+  3)  Create VNET
+      a) Output Required
+  4)  Peer Track VNET to HUB
+  5)  Peer HUB to Track VNET
+  6)  Create Storage Account for Track
+      a) Output Required
+
+
+Configuration:
+
+
+Resources:
+        Resource Group                                            = azurerm_resource_group.rg
+  VNET                                                      = azurerm_virtual_network.vnet
+  VNET Peering                                              = azurerm_virtual_network_peering.peer_track_to_hub
+  VNET Peering                                              = azurerm_virtual_network_peering.peer_hub_to_track
+  Storage Account - Store                                   = azurerm_storage_account.storage
+
+
+Dependencies:
+  Remote State - HUB                                        = vnet_id
+  Remote State - HUB                                        = vnet_name
+  peer_track_to_hub                                         = azurerm_virtual_network.vnet
+  peer_hub_to_track                                         = azurerm_virtual_network_peering.peer_track_to_hub
+
+  rg_name                                                   = azurerm_resource_group.rg.name
+  vnet_address_space                                        = azurerm_virtual_network.vnet.address_space
+  vnet_id                                                   = azurerm_virtual_network.vnet.id
+  vnet_name                                                 = azurerm_virtual_network.vnet.name
+  storage_name                                              = azurerm_storage_account.storage.name
+
+TODO:
+  Define subnet pattern
+  Adjust Tags
+
+*/
+
+/*
+*======================================+=======================================*
+*                                                                              *
+*                               RESOURCE GROUPS                                *
+*                                                                              *
+*======================================+=======================================*
+*/
+
+resource "azurerm_resource_group" "rg" {
+  # naming standard                               = {ENVIRONMENT}-{REGION_MAP}-INFRASTRUCTURE
+  name                                            = "${upper(var._provisioningZone)}-${
+
+  location                                        = var._region
+  tags                                            = var._tags
+}
+
+/*
+*======================================+=======================================*
+*                                                                              *
+*                                     VNET                                     *
+*                                                                              *
+*======================================+=======================================*
+*/
+
+data "azurerm_virtual_network" "vnet" {
+  name                                            = var._vnet_name
+  resource_group_name                             = var._vnet_resource_group_name
+}
+
+/*
+*                                Routing Table                                 *
+*                                                                              *
+*======================================+=======================================*
+data "azurerm_route_table" "rt" {
+  name                                            = var._rt_name
+  resource_group_name                             = var._rt_resource_group_name
+}
+
+/*
+*======================================+=======================================*
+*                                                                              *
+*                                   INFOBLOX                                   *
+*                                                                              *
+*======================================+=======================================*
+*/
+
+resource "cwnetworking_ipaddressblock" "subnet_utility" {
+  # naming standard                               = {ENVIRONMENT} {region}  Utility Subnet
+  comment                                         = "${upper(var._provisioningZone)} ${upper(var._region)} Utility Subnet"
+
+}
+
+# resource "cwnetworking_ipaddressblock" "subnet_build_server" {
+
+#   parent_network                                  = cwnetworking_ipaddressblock.vnet_address_space.network
+#   network_size                                    = "28"
+# }
+
+/*
+*======================================+=======================================*
+*                                                                              *
+*                                   SUBNETS                                    *
+*                                                                              *
+*======================================+=======================================*
+  # BEGIN: Workaround for deprecated attribute
+  lifecycle {
+    ignore_changes                                = [network_security_group_id,
+  # END: Workaround for deprecated attribute
+
+  # naming standard                               = {ENVIRONMENT}-{REGION_MAP}-utility-subnet
+  name                                            = "${upper(var._provisioningZone)}-${
+
+  resource_group_name                             = data.azurerm_virtual_network.vnet.resource_group_name
+  virtual_network_name                            = data.azurerm_virtual_network.vnet.name
+  address_prefix                                  = cwnetworking_ipaddressblock.subnet_utility.network
+  service_endpoints                               = ["Microsoft.Storage"]
+}
+
+# resource "azurerm_subnet" "subnet_build_server" {
+#   # BEGIN: Workaround for deprecated attribute
+#   lifecycle {
+#     ignore_changes                                = [network_security_group_id,
+#                                                      route_table_id]
+#   }
+#   # END: Workaround for deprecated attribute
+
+#   # naming standard                               = {ENVIRONMENT}-{REGION_MAP}-{SAP_VNET}_subnet-build-server
+#   name                                            = "${upper(var._provisioningZone)}-${
+#                                                        upper(var._sap_vnet)}_subnet-build-server"
+
+#   resource_group_name                             = azurerm_resource_group.rg.name
+#   virtual_network_name                            = azurerm_virtual_network.vnet.name
+#   address_prefix                                  = cwnetworking_ipaddressblock.subnet_build_server.network
+#   service_endpoints                               = ["Microsoft.Storage"]
+# }
+
+
+/*
+*======================================+=======================================*
+*                                                                              *
+*                      Subnet / Route Table Association                        *
+*                                                                              *
+*==============================================================================*
+*/
+resource "azurerm_subnet_route_table_association" "rt_ass" {
+  subnet_id                                       = azurerm_subnet.utility_subnet.id
+  route_table_id                                  = data.azurerm_route_table.rt.id
+}
+
+# resource "azurerm_subnet_route_table_association" "rt_build_server_ass" {
+#   subnet_id                                       = azurerm_subnet.subnet_build_server.id
+#   route_table_id                                  = azurerm_route_table.rt.id
+# }
+
+
+/*
+*======================================+=======================================*
+*                                                                              *
+*                               NSG Association                                *
+*/
+resource "azurerm_subnet_network_security_group_association" "utility_subnet_ass" {
+  subnet_id                                       = azurerm_subnet.utility_subnet.id
+
+# resource "azurerm_subnet_network_security_group_association" "subnet_build_server_ass" {
+#   subnet_id                                       = azurerm_subnet.subnet_build_server.id
+#   network_security_group_id                       = azurerm_network_security_group.subnet_build_server.id
+# }
+
+
+/*
+*======================================+=======================================*
+*                                                                              *
+*                               Storage Account                                *
+*/
+resource "azurerm_storage_account" "diag" {
+  # BEGIN: Workaround for policy that changes Advanced Threat Protection
+  }
+  # END: Workaround for deprecated attribute
+
+  # naming standard                               = {environment}{region_map}{sap_vnet}diag
+  name                                            = "${lower(var._provisioningZone)}${
+                                                       lower(element(split(",", lookup(var.region_mapping, var._region, "-,unknown")),1))}diag"
+
+  resource_group_name                             = azurerm_resource_group.rg.name
+  location                                        = azurerm_resource_group.rg.location
+  tags                                            = var._tags
+  account_kind                                    = "StorageV2"
+  account_tier                                    = "Standard"
+  account_replication_type                        = "LRS"
+}
+
+resource "azurerm_storage_account" "store" {
+  lifecycle {                                     # Workaround for policy that changes Advanced Threat Protection
+    ignore_changes                                = [enable_advanced_threat_protection]
+  }
+
+  # naming standard                               = {environment}{region_map}{sap_vnet}store
+  name                                            = "${lower(var._provisioningZone)}${
+                                                       lower(element(split(",", lookup(var.region_mapping, var._region, "-,unknown")),1))}store"
+
+  resource_group_name                             = azurerm_resource_group.rg.name
+  location                                        = azurerm_resource_group.rg.location
+  tags                                            = var._tags
+  account_kind                                    = "StorageV2"
+  account_tier                                    = "Standard"
+  account_replication_type                        = "LRS"
