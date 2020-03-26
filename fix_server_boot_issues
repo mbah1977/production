@@ -1,0 +1,6 @@
+#enter systemd.unit=emergency.target
+#chroot /
+#mount -o remout,rw /
+#vim /etc/fstab
+#xfs_repair -d /dev/mapper/centos-root
+
