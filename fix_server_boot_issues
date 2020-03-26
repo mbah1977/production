@@ -4,3 +4,27 @@
 #vim /etc/fstab
 #xfs_repair -d /dev/mapper/centos-root
 
+Hard Drive:
+lsscsi or lsblk   #    list SCSI devices (or hosts) and their attributes , this is useful when kernel error logs report isues with a device
+[root@puppetmaster production]# lsscsi
+[0:0:0:0]    disk    VMware,  VMware Virtual S 1.0   /dev/sda 
+[0:0:1:0]    disk    VMware,  VMware Virtual S 1.0   /dev/sdb 
+[2:0:0:0]    cd/dvd  NECVMWar VMware IDE CDR10 1.00  /dev/sr0 
+cat /proc/scsi/scsi. 
+smartctl -H /dev/sda  # to test the health of a device. # This command is used to run a self-test on the device to see if it has failed. It can also be used to check detailed information about a device
+smartd is the daemon that monitors hard drives. When you run #systemctl status smartd #you will see currently attached scsi devices under the monitor of smartd
+#Hard drives will show issues too when it cannot be found, it position has changed, meaning the system is not seeing it
+#also when it has been converted to RO, by the kernel. Meaning there is an issue with writing to it.
+#if the drive is corrupt only , then fsck or xfs_repair on it can fix it. 
+
+
+Network:
+ifdown ens33 # turn up interface
+ifup ens33   # turn down interface
+ifconfig -s  # short list of interfaces
+ifconfig  -a # list all interfaces
+interface stats:
+RX errors, dropped, overruns(buffer full) # if any of the values if non-zero, then the nic has issues
+TX errors, dropped, overruns, carriers, collisions # if there is a non-zero value, then there is an issue with the nic.
+mtu
+
